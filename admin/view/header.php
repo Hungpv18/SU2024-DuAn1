@@ -34,7 +34,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -47,8 +47,6 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php?act=dskh">Danh sách</a>
-                        <a class="collapse-item" href="">Thêm</a>
-                        <a class="collapse-item" href="">Sửa</a>
                     </div>
                 </div>
             </li>
@@ -61,8 +59,6 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php?act=dsdm">Danh sách</a>
-                        <a class="collapse-item" href="index.php?act=dsdm&them">Thêm</a>
-                        <a class="collapse-item" href="">Sửa</a>
                     </div>
                 </div>
             </li>
@@ -96,4 +92,3 @@
             </li>
 
         </ul>
-        <div id="content-wrapper" class="d-flex flex-column">

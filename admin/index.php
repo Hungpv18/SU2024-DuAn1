@@ -2,9 +2,13 @@
 session_start();
 ob_start();
 
+include '../dao/pdo.php';
+include '../dao/danhmuc.php';
+include '../dao/khachhang.php';
+
 // Giao diện
-include './view/header.php';
-include './view/navbar.php';
+include 'view/header.php';
+include 'view/navbar.php';
 
 $previousPage = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
 
@@ -13,16 +17,19 @@ if (isset($_GET['act'])) {
     switch ($act) {
             // *Bắt đầu chức năng Khách hàng
         case 'dskh':
+            $list_dskh = loadall_dskh();
             require './modules/khachhang/danhsach.php';
             break;
         case 'suakh':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $khachhang = loadone_khachhang($_GET['id']);
             }
             include('./modules/khachhang/sua.php');
             break;
 
             // *Bắt đầu chức năng danh mục
         case 'dsdm':
+            $listdanhmuc = loadall_danhmuc();
             require './modules/danhmuc/danhsach.php';
             break;
         case 'themdm':
