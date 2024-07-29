@@ -2,7 +2,7 @@
 
 /**
  * Thêm tài khoản
- * @param mixed $nameloai
+ * @param mixed $tenloai
  * @return void
  */
 function insert_taikhoan($email, $name, $password)

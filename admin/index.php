@@ -5,6 +5,7 @@ ob_start();
 include '../dao/pdo.php';
 include '../dao/danhmuc.php';
 include '../dao/khachhang.php';
+include '../dao/sanpham.php';
 
 // Giao diện
 include 'view/header.php';
@@ -56,6 +57,16 @@ if (isset($_GET['act'])) {
             break;
             // *Bắt đầu chức năng sản phẩm
         case 'dssp':
+            if (isset($_POST['listcheck']) && ($_POST['listcheck'])) {
+                $keyw = $_POST['keyw'];
+                $category_id  = $_POST['danh_muc_id'];
+            } else {
+                $keyw = '';
+                $category_id  = 0;
+            }
+
+            $listsanpham = loadall_sanpham($keyw, $category_id );
+            $listdanhmuc = loadall_danhmuc();
             require './modules/sanpham/danhsach.php';
             break;
             // *Bắt đầu chức năng đơn hàng

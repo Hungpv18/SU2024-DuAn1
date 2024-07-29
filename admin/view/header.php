@@ -71,8 +71,6 @@
                 <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php?act=dssp">Danh sách</a>
-                        <a class="collapse-item" href="product-add.html">Thêm</a>
-                        <a class="collapse-item" href="product-edit.html">Sửa</a>
                     </div>
                 </div>
             </li>
