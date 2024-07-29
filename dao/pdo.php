@@ -1,9 +1,6 @@
 <?php
-/**
- * Mở kết nối đến CSDL sử dụng PDO
- */
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=ShopQuanAo;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=su24_duan1;charset=utf8";
     $username = 'root';
     $password = 'mysql';
 
@@ -11,7 +8,6 @@ function pdo_get_connection(){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
-
 
 function pdo_execute($sql){
     $sql_args = array_slice(func_get_args(), 1);
@@ -28,8 +24,6 @@ function pdo_execute($sql){
     }
 }
 
-
-
 function pdo_query($sql){
     $sql_args = array_slice(func_get_args(), 1);
     try{
@@ -45,6 +39,13 @@ function pdo_query($sql){
     finally{
         unset($conn);
     }
+}
+
+function pdo_query_search($sql, $params = []) {
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
@@ -65,7 +66,6 @@ function pdo_query_one($sql){
     }
 }
 
-
 function pdo_query_value($sql){
     $sql_args = array_slice(func_get_args(), 1);
     try{
@@ -81,4 +81,16 @@ function pdo_query_value($sql){
     finally{
         unset($conn);
     }
+}
+
+function pdo_query_total($sql, $params = []) {
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
