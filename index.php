@@ -28,6 +28,7 @@ https://templatemo.com/tm-559-zay-shop
 
 <body>
     <?php
+
     $action = "home";
     if (isset($_GET['act']))
         $action = $_GET['act'];
@@ -47,6 +48,9 @@ https://templatemo.com/tm-559-zay-shop
             break;
         case "about";
             include './client/about.php';
+            break;
+        case "search":
+            include './client/search.php';
             break;
         case "cart";
             include './client/cart.php';

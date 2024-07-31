@@ -57,7 +57,7 @@ include './include/nav.php';
                             <h1 class="h1">Có hết các cổng kết nối cần thiết</h1>
                             <h3 class="h2">MacBook Pro có dãy cổng kết nối mạnh mẽ để kết nối với thiết bị ngoại vi tốc độ cao </h3>
                             <p>
-                            Kết nối với các màn hình ngoài. Kết nối một màn hình ngoài có độ phân giải cao với M3, lên đến hai màn hình với M3 Pro, hoặc lên đến bốn màn hình với M3 Max
+                                Kết nối với các màn hình ngoài. Kết nối một màn hình ngoài có độ phân giải cao với M3, lên đến hai màn hình với M3 Pro, hoặc lên đến bốn màn hình với M3 Max
                             </p>
                         </div>
                     </div>
@@ -83,21 +83,20 @@ include './include/nav.php';
         </div>
     </div>
     <div class="row">
+        <?php
+        include './dao/product.php';
+        $rows = getCategories();
+        foreach ($rows as $row) {
+            echo '
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./public/img/dmmac.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">MacBook</h5>
+            <a href="#"><img src="./public/img/' . $row['image'] . '" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">' . $row['name'] . '</h5>
             <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./public/img/dmdell.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Dell</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./public/img/dmmsi.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">MSI</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
+        </div>';
+        }
+        ?>
+
+
     </div>
 </section>
 <!-- End Categories of The Month -->
@@ -107,81 +106,40 @@ include './include/nav.php';
 <section class="bg-light">
     <div class="container py-5">
         <div class="row text-center py-3">
-            
+
         </div>
         <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./public/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$240.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                        </p>
-                        <p class="text-muted">Reviews (24)</p>
-                    </div>
+        <?php
+    $products = getProductLimit();
+    foreach ($products as $product) {
+        echo '
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+                <a href="index.php?act=shop-single&id=' . $product['id'] . '">
+                    <img src="./public/img/' . $product['image'] . '" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <ul class="list-unstyled d-flex justify-content-between">
+                        <li>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                        </li>
+                        <li class="text-muted text-right">$' . $product['price'] . '</li>
+                    </ul>
+                    <a href="index.php?act=shop-single&id=' . $product['id'] . '" class="h2 text-decoration-none text-dark">' . $product['name'] . '</a>
+                    <p class="card-text">
+                       '.$product['desc_c'].'
+                    </p>
+                    <p class="text-muted">Reviews (24)</p>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./public/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$480.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-                        <p class="card-text">
-                            Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
-                        </p>
-                        <p class="text-muted">Reviews (48)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./public/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$360.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
-                        <p class="card-text">
-                            Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                        </p>
-                        <p class="text-muted">Reviews (74)</p>
-                    </div>
-                </div>
-            </div>
+        </div>';
+    }
+    ?>
+
         </div>
     </div>
 </section>
