@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Lưu trữ giá trị của trường input
     $defaultKeyword = $keyword;
-
 }
 ?>
 
@@ -55,14 +54,14 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                 <li class="breadcrumb-item active">QUẢN LÝ MÓN ĂN</li>
             </ol>
             <form action="<?php
-            if (isset($_POST['delete']) && $_POST['delete']) {
-                echo 'index.php?act=delete_list_ma';
-            } else if (isset($_POST['listcheck']) && $_POST['listcheck']) {
-                echo 'index.php?act=dsma';
-            } else {
-                echo 'index.php?act=dsma&page=1';
-            }
-            ?>" method="POST">
+                            if (isset($_POST['delete']) && $_POST['delete']) {
+                                echo 'index.php?act=delete_list_ma';
+                            } else if (isset($_POST['listcheck']) && $_POST['listcheck']) {
+                                echo 'index.php?act=dsma';
+                            } else {
+                                echo 'index.php?act=dsma&page=1';
+                            }
+                            ?>" method="POST">
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -85,18 +84,14 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                                     }
                                     ?>
                                 </select>
-                                <input type="submit" class="btn btn-primary float-end mt-1" name="listcheck"
-                                    value="Chọn">
+                                <input type="submit" class="btn btn-primary float-end mt-1" name="listcheck" value="Chọn">
                             </div>
                             <div class="col-4">
                                 <label for="formSelect" class="form-label">Tìm kiếm</label>
                                 <!-- Navbar Search-->
                                 <div class=" input-group">
-                                    <input class="form-control" type="text" placeholder="Tìm kiếm" aria-label="Tìm kiếm"
-                                        aria-describedby="btnNavbarSearch" name="keyw"
-                                        value="<?php echo htmlspecialchars($defaultKeyword); ?>" />
-                                    <input type="submit" class="btn btn-outline-warning" name="listcheck"
-                                        value="Xác nhận">
+                                    <input class="form-control" type="text" placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="btnNavbarSearch" name="keyw" value="<?php echo htmlspecialchars($defaultKeyword); ?>" />
+                                    <input type="submit" class="btn btn-outline-warning" name="listcheck" value="Xác nhận">
                                 </div>
                             </div>
 
@@ -117,24 +112,27 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                 </thead>
                 <tbody>
                     <?php
+                    $img_path = '/public/img/';
                     foreach ($listsanpham as $sanpham) {
+                        // var_dump()
+                        // var_dump($sanpham); die;
                         extract($sanpham);
-                        $hinhpath = $img_path . $hinh;
+                        $hinhpath = $img_path . $image;
                         if (is_file($hinhpath)) {
                             $image = "<img src='" . $hinhpath . "' height='60'>";
                         } else {
                             $image = "Không có hình ảnh";
                         }
-                        $suama = "index.php?act=suasp&id=" . $id;
-                        $xoama = "index.php?act=xoasp&id=" . $id;
+                        $suasp = "index.php?act=suasp&id=" . $id;
+                        $xoasp = "index.php?act=xoasp&id=" . $id;
                         echo '
                                 <tr>
                                 <td><input type="checkbox" name="check_del[]" class="checkbox" value="' . $id . '" /></td>
                                 <th scope="row">' . $id . '</th>
                                     <td scope="row">' . $name . '</td>
                                     <td scope="row">' . number_format($price, 0, ',', '.') . 'đ</td>
-                                    <td scope="row">' . number_format($sale_price, 0, ',', '.') . 'đ</td>
-                                    <td scope="row" class="text-center">' . $image . '</td>
+                                    <td scope="row">' . $sale_price . 'đ</td>
+                                    <td scope="row">' . $image . '</td>
                                     <td scope="row" class="text-center"><span class="btn btn-success btn-sm cs-default">Hoạt động</span></td>
                                     <td>
                                         <a href="' . $suasp . '" class="btn btn-primary">Sửa</a>
@@ -152,23 +150,21 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
             <label for="checkAll" class="btn btn-primary chon">Chọn tất cả</label>
             <label for="checkAll" class="btn btn-warning bochon" style="display: none;">Bỏ chọn</label>
             <input type="checkbox" hidden id="checkAll">
-            <input class="btn btn-danger" type="submit" value="Xóa mục đã chọn" name="delete"
-                onclick="return confirm(`Bạn có chắc muốn xóa không?`)">
+            <input class="btn btn-danger" type="submit" value="Xóa mục đã chọn" name="delete" onclick="return confirm(`Bạn có chắc muốn xóa không?`)">
 
             <!-- Phân trang  -->
             <div class="pag float-end">
                 <nav aria-label="Page navigation example" class="pag">
                     <ul class="pagination">
-                        <?php if ($cr_page > 1): ?>
+                        <?php if ($cr_page > 1) : ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?act=dsma&page=<?= $cr_page - 1 ?>"
-                                    aria-label="Previous">
+                                <a class="page-link" href="index.php?act=dsma&page=<?= $cr_page - 1 ?>" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                         <?php endif; ?>
 
-                        <?php for ($i = 1; $i <= $total_page; $i++): ?>
+                        <?php for ($i = 1; $i <= $total_page; $i++) : ?>
                             <li class="page-item <?php echo (($cr_page == $i) ? 'active' : '') ?>">
                                 <a class="page-link" href="index.php?act=dsma&page=<?= $i ?>">
                                     <?= $i ?>
@@ -176,7 +172,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                             </li>
                         <?php endfor; ?>
 
-                        <?php if ($cr_page < $total_page): ?>
+                        <?php if ($cr_page < $total_page) : ?>
                             <li class="page-item">
                                 <a class="page-link" href="index.php?act=dsma&page=<?= $cr_page + 1 ?>" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
