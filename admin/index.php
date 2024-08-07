@@ -34,10 +34,10 @@ if (isset($_GET['act'])) {
             if (isset($_POST['updateds']) && ($_POST['updateds'])) {
                 // Retrieve form data
                 $id = $_POST['id'];
-                $name = $_POST['ten'];
+                $name = $_POST['name'];
                 $email = $_POST['email'];
-                $phone = $_POST['sdt'];
-                $address = $_POST['dia_chi'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
                 $check = 1;
                 $phonePattern = '/^(84|0[35789])+([0-9]{8})\b$/';
 

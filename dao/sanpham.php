@@ -151,9 +151,9 @@ function load_ten_danhmuc($category_id )
 function update_sanpham($id, $category_id , $name, $price, $sale_price, $desc_c, $image)
 {
     if ($image != "") {
-        $sql = "update products set ten='" . $name . "', gia='" . $price . "', gia_giam='" . $sale_price . "',hinh='" . $image . "',mo_ta='" . $desc_c . "', danh_muc_id='" . $category_id  . "' where id=" . $id;
+        $sql = "update products set name='" . $name . "', price='" . $price . "', sale_price='" . $sale_price . "',image='" . $image . "',desc_c='" . $desc_c . "', category_id='" . $category_id  . "' where id=" . $id;
     } else {
-        $sql = "update products set ten='" . $name . "', gia='" . $price . "', gia_giam='" . $sale_price . "',mo_ta='" . $desc_c . "', danh_muc_id='" . $category_id  . "' where id=" . $id;
+        $sql = "update products set name='" . $name . "', gia='" . $price . "', sale_price='" . $sale_price . "',desc_c='" . $desc_c . "', category_id='" . $category_id  . "' where id=" . $id;
     }
     pdo_execute($sql);
 }

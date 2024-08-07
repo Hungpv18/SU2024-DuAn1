@@ -62,7 +62,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                             <?php
                             foreach ($list_dskh as $dskh) {
                                 extract($dskh);
-                                $suakh = "index.php?act=sua&id=" . $id; // Fix the URL
+                                $suakh = "index.php?act=suakh&id=" . $id; // Fix the URL
 
                                 echo '<tr>
                                     <td><input type="checkbox" name="" id="" /></td>
