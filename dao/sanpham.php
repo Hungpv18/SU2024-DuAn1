@@ -41,19 +41,19 @@ function loadall_sanpham($keyw = '', $category_id  = 0)
     $sql = "SELECT * FROM products WHERE status = 1";
 
     if ($keyw != "") {
-        $sql .= " AND ten LIKE '%" . $keyw . "%'";
+        $sql .= " AND name LIKE '%" . $keyw . "%'";
     }
 
     if ($category_id  > 0) {
-        $sql .= " AND danh_muc_id = '" . $category_id  . "'";
+        $sql .= " AND category_id = '" . $category_id  . "'";
     }
 
     $sql .= " ORDER BY id DESC";
 
     // Thực hiện truy vấn và trả về kết quả
-    $listmonan = pdo_query($sql);
+    $listsanpham = pdo_query($sql);
 
-    return $listmonan;
+    return $listsanpham;
 }
 /**
  * Hiển thị tất cả sản phẩm lưu trữ khi đã xóa

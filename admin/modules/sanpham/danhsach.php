@@ -46,12 +46,12 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 <div class="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">QUẢN LÝ MÓN ĂN</h1>
+            <h1 class="mt-4">QUẢN LÝ SẢN PHẨM</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
                     <a href="index.php">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">QUẢN LÝ MÓN ĂN</li>
+                <li class="breadcrumb-item active">QUẢN LÝ SẢN PHẨM</li>
             </ol>
             <form action="<?php
                             if (isset($_POST['delete']) && $_POST['delete']) {

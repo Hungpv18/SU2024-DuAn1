@@ -2,7 +2,7 @@
 
 /**
  * Thêm tài khoản
- * @param mixed $tenloai
+ * @param mixed $khachhang
  * @return void
  */
 function insert_taikhoan($email, $name, $password)
@@ -126,6 +126,13 @@ function loadone_khachhang($id)
     $sql = "select * from users where id=" . $id;
     $dskh = pdo_query_one($sql);
     return $dskh;
+}
+
+function get_khachhang_by_id($id) {
+    global $pdo; 
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function update_dskh($id, $name, $email, $phone, $address)

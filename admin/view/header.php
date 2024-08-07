@@ -83,8 +83,6 @@
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php?act=dsdh">Danh sách</a>
-                        <a class="collapse-item" href="order-add.html">Thêm</a>
-                        <a class="collapse-item" href="order-edit.html">Sửa</a>
                     </div>
                 </div>
             </li>

@@ -13,17 +13,9 @@
     <link rel="stylesheet" href="./public/css/templatemo.css">
     <link rel="stylesheet" href="./public/css/custom.css">
 
-    <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="./public/css/fontawesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 </head>
 
 <body>

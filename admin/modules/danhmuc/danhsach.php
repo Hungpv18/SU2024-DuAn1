@@ -22,6 +22,7 @@ $start = ($cr_page - 1) * $limit;
 // Hàm để lấy danh sách sản phẩm với giới hạn
 $listdanhmuc_limit = getDanhMuc_limit($start, $limit);
 
+$listdanhmuc = [];
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $listdanhmuc = $listdanhmuc_limit;

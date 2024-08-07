@@ -74,7 +74,7 @@ function loadone_danhmuc($id)
  */
 function update_danhmuc($id, $name)
 {
-    $sql = "update categories set ten_dm='" . $name . "' where id=" . $id;
+    $sql = "update categories set name ='" . $name . "' where id=" . $id;
     pdo_execute($sql);
 }
 
