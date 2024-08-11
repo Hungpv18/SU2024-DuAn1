@@ -11,17 +11,17 @@ if (is_file($hinhpath)) {
 }
 ?>
 <div class="container mt-5">
-    <h1 class="mb-4">SỬA MÓN ĂN</h1>
+    <h1 class="mb-4">SỬA SẢN PHẨM</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="index.php?act=dssp">QUẢN LÝ MÓN ĂN</a></li>
-            <li class="breadcrumb-item active" aria-current="page">SỬA MÓN ĂN</li>
+            <li class="breadcrumb-item"><a href="index.php?act=dssp">QUẢN LÝ SẢN PHẨM</a></li>
+            <li class="breadcrumb-item active" aria-current="page">SỬA SẢN PHẨM</li>
         </ol>
     </nav>
     <div class="card">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i> Chỉnh sửa món ăn
+            <i class="fas fa-table me-1"></i> Chỉnh sửa sản phẩm
         </div>
         <form class="p-4" method="post" action="index.php?act=updatesp" enctype="multipart/form-data">
             <div class="mb-3">

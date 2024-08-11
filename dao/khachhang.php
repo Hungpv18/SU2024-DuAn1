@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Thêm tài khoản
  * @param mixed $khachhang
@@ -87,7 +86,7 @@ function check_pass($id)
 
 function update_password($email, $password)
 {
-    $sql = "update users set mat_khau='" . $password . "' where email='" . $email . "' ";
+    $sql = "update users set password='" . $password . "' where email='" . $email . "' ";
     pdo_execute($sql);
 }
 
@@ -111,7 +110,7 @@ function loadall_dskh()
  */
 function delete_taikhoan($id)
 {
-    $sql = "delete from taikhoan where id=" . $id;
+    $sql = "delete from khachhang where id=" . $id;
     pdo_execute($sql);
 }
 
@@ -137,12 +136,12 @@ function get_khachhang_by_id($id) {
 
 function update_dskh($id, $name, $email, $phone, $address)
 {
-    $sql = "UPDATE khach_hang SET name = ?, email = ?, sdt = ?, dia_chi = ? WHERE id = ?";
+    $sql = "UPDATE users SET name = ?, email = ?, phone = ?, address = ? WHERE id = ?";
     pdo_execute($sql, $name, $email, $phone, $address, $id);
 }
 function check_only_user($name)
 {
-    $sql = "select * from taikhoan where user='" . $name . "'";
+    $sql = "select * from khachhang where user='" . $name . "'";
     $tk = pdo_query_one($sql);
     return $tk;
 }

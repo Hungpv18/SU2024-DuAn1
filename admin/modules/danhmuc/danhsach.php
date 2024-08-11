@@ -2,7 +2,7 @@
 // Truy vấn sử dụng PDO
 $pdo = pdo_get_connection();
 
-$stmt = $pdo->query("SELECT * FROM categories WHERE status = 1 ORDER BY id DESC");
+$stmt = $pdo->query("SELECT * FROM categories WHERE status = 1 ORDER BY id ASC");
 $listdm = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //Tổng các bảng ghi
@@ -33,7 +33,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     <h1 class="mt-4">QUẢN LÝ DANH MỤC</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item">
-            <a href="index.php">Dashboard</a>
+            <a href="index.php?act=dashboard">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">QUẢN LÝ DANH MỤC</li>
     </ol>
