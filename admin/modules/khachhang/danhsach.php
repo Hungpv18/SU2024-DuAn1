@@ -24,7 +24,7 @@ $list_dskh = getdskh_limit($start, $limit);
 
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $listmonan = $list_dskh;
+    $listsanpham = $list_dskh;
 }
 
 ?>
@@ -34,7 +34,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
             <h1 class="mt-4">QUẢN LÝ KHÁCH HÀNG</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
-                    <a href="index.php">Dashboard</a>
+                    <a href="index.php?act=dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">QUẢN LÝ KHÁCH HÀNG</li>
             </ol>

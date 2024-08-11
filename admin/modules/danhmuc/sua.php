@@ -12,7 +12,9 @@ if (is_array($danhMuc)) {
                 <li class="breadcrumb-item">
                     <a href="index.php?act=dsdm">Dashboard</a>
                 </li>
-                <a href="index.php?act=dsdm&page=1" class="breadcrumb-item">QUẢN LÝ DANH MỤC</a>
+                <li class="breadcrumb-item">
+                    <a href="index.php?act=dsdm&page=1">QUẢN LÝ DANH MỤC</a>
+                </li>
                 <li class="breadcrumb-item active">SỬA DANH MỤC</li>
             </ol>
 
@@ -21,34 +23,24 @@ if (is_array($danhMuc)) {
                     <i class="fas fa-table me-1"></i>
                     SỬA DANH MỤC
                 </div>
-                <form class="row g-3" action="index.php?act=capnhatdm" method="post" enctype="multipart/form-data">
-
+                <form class="row g-3 p-3" action="index.php?act=capnhatdm" method="post" enctype="multipart/form-data">
                     <div class="card-body">
-                        <div class="row g-3">
-                            <div class="mb-2">
-                                <label for="exampleFormControlInput1" class="form-label">Mã Danh Mục</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" name="id" value="<?php if (isset($id) && ($id != ""))
-                                    echo $id ?>" disabled>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="exampleFormControlInput1" class="form-label">Tên Danh Mục</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
-                                        value="<?php if (isset($name) && ($name != ""))
-                                    echo $name ?>">
-                                </div>
-                            </div>
-
+                        <div class="form-group mb-3">
+                            <label for="idInput" class="form-label">Mã Danh Mục</label>
+                            <input type="text" class="form-control" id="idInput" name="id" value="<?php if (isset($id) && ($id != "")) echo $id ?>" disabled>
                         </div>
-                        <div class="card-footer mb-12" style="float:right;">
-                            <input type="hidden" name="id" value="<?php if (isset($id) && ($id > 0))
-                                    echo $id ?>">
-                            <input type="submit" class="btn btn-info me-lg-2 float-end" name="capnhat" value="Lưu thay đổi">
-                            <input type="reset" class="btn btn-warning me-2 float-end" value="Nhập lại">
+                        <div class="form-group mb-3">
+                            <label for="nameInput" class="form-label">Tên Danh Mục</label>
+                            <input type="text" class="form-control" id="nameInput" name="name" value="<?php if (isset($name) && ($name != "")) echo $name ?>">
                         </div>
-                    </form>
-
-                </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <input type="hidden" name="id" value="<?php if (isset($id) && ($id > 0)) echo $id ?>">
+                        <input type="submit" class="btn btn-info me-2" name="capnhat" value="Lưu thay đổi">
+                        <input type="reset" class="btn btn-warning me-2" value="Nhập lại">
+                    </div>
+                </form>
             </div>
-        </main>
-
-    </div>
+        </div>
+    </main>
+</div>

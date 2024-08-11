@@ -6,7 +6,7 @@
  */
 function insert_sanpham($name, $price, $sale_price, $image, $desc_c, $category_id )
 {
-    $sql = "insert into mon_an(name ,price ,sale_price ,image ,desc_c ,category_id ) values('$name','$price','$sale_price','$image','$desc_c','$category_id ')";
+    $sql = "insert into products(name ,price ,sale_price ,image ,desc_c ,category_id ) values('$name','$price','$sale_price','$image','$desc_c','$category_id ')";
     pdo_execute($sql);
 }
 
@@ -68,15 +68,15 @@ function loadall_sanpham_luutru($keyw = '', $category_id  = 0)
     }
 
     if ($category_id  > 0) {
-        $sql .= " AND danh_muc_id = '" . $category_id  . "'";
+        $sql .= " AND category_id = '" . $category_id  . "'";
     }
 
     $sql .= " ORDER BY id DESC";
 
     // Thực hiện truy vấn và trả về kết quả
-    $listmonan = pdo_query($sql);
+    $listsanpham = pdo_query($sql);
 
-    return $listmonan;
+    return $listsanpham;
 }
 
 
@@ -97,8 +97,8 @@ function loadall_sanpham_top10()
 function loadall_sanpham_home()
 {
     $sql = "select * from products where 1 and status = 1 order by id desc limit 0,9";
-    $listmonan = pdo_query($sql);
-    return $listmonan;
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
 }
 
 /**
@@ -118,12 +118,12 @@ function loadone_sanpham($id)
  * @param mixed $id
  * @return array
  */
-function load_sanpham_cungloai($id, $products)
+function load_sanpham_cungloai($id, $category_id)
 {
-    $sql = "select * from mon_an where danh_muc_id =" . $products . " and id <>" . $id;
+    $sql = "select * from products where category_id =" . $category_id . " and id <>" . $id;
     $sql .= " limit 0,4";
-    $listmonan = pdo_query($sql);
-    return $listmonan;
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
 }
 
 /**
@@ -133,7 +133,7 @@ function load_sanpham_cungloai($id, $products)
 function load_ten_danhmuc($category_id )
 {
     if ($category_id  > 0) {
-        $sql = "select * from danh_muc where id=" . $category_id ;
+        $sql = "select * from categories where id=" . $category_id ;
         $dm = pdo_query_one($sql);
         extract($dm);
         return $name;
@@ -153,7 +153,7 @@ function update_sanpham($id, $category_id , $name, $price, $sale_price, $desc_c,
     if ($image != "") {
         $sql = "update products set name='" . $name . "', price='" . $price . "', sale_price='" . $sale_price . "',image='" . $image . "',desc_c='" . $desc_c . "', category_id='" . $category_id  . "' where id=" . $id;
     } else {
-        $sql = "update products set name='" . $name . "', gia='" . $price . "', sale_price='" . $sale_price . "',desc_c='" . $desc_c . "', category_id='" . $category_id  . "' where id=" . $id;
+        $sql = "update products set name='" . $name . "', price='" . $price . "', sale_price='" . $sale_price . "',desc_c='" . $desc_c . "', category_id='" . $category_id  . "' where id=" . $id;
     }
     pdo_execute($sql);
 }
@@ -186,16 +186,16 @@ function update_luotxem($id)
 
 function count_sanpham_danhmuc($category_id )
 {
-    $sql = "SELECT COUNT(id) as so_luong FROM products WHERE danh_muc_id = '" . $category_id  . "' GROUP BY danh_muc_id;";
+    $sql = "SELECT COUNT(id) as so_luong FROM products WHERE category_id = '" . $category_id  . "' GROUP BY danh_muc_id;";
     $count = pdo_query_value($sql);
     return $count;
 }
 
 function load_sanpham_by_danhMuc($category_id )
 {
-    $sql = "SELECT * FROM products WHERE status = 1 AND danh_muc_id = " . $category_id  . " ORDER BY id DESC";
-    $listmonan = pdo_query($sql);
-    return $listmonan;
+    $sql = "SELECT * FROM products WHERE status = 1 AND category_id = " . $category_id  . " ORDER BY id DESC";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
 }
 
 ?>

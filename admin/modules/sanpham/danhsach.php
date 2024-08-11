@@ -4,7 +4,7 @@ $defaultKeyword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Kiểm tra xem biểu mẫu đã được gửi chưa
-    $keyword = $_POST["keyw"]; // Lấy dữ liệu từ trường input có tên "keyw"
+    $keyword = $_POST["keyw"] ?? ''; // Lấy dữ liệu từ trường input có tên "keyw"
 
     // Lưu trữ giá trị của trường input
     $defaultKeyword = $keyword;
@@ -38,7 +38,7 @@ $list_ = getSanpham_limit($start, $limit);
 
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $listmonan = $list_monan;
+    $listsanpham = $list_sanpham;
 }
 
 ?>
@@ -49,7 +49,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
             <h1 class="mt-4">QUẢN LÝ SẢN PHẨM</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
-                    <a href="index.php">Dashboard</a>
+                    <a href="index.php?act=dssp">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">QUẢN LÝ SẢN PHẨM</li>
             </ol>
@@ -57,7 +57,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                             if (isset($_POST['delete']) && $_POST['delete']) {
                                 echo 'index.php?act=delete_list_ma';
                             } else if (isset($_POST['listcheck']) && $_POST['listcheck']) {
-                                echo 'index.php?act=dsma';
+                                echo 'index.php?act=dssp';
                             } else {
                                 echo 'index.php?act=dsma&page=1';
                             }
@@ -67,7 +67,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                         <i class="fas fa-table me-1"></i>
                         Danh Sách
                         <div class="mb-12 float-end">
-                            <a href="index.php?act=them" class="btn btn-primary btn-sm">Thêm mới</a>
+                            <a href="index.php?act=themsp" class="btn btn-primary btn-sm">Thêm mới</a>
                         </div>
                     </div>
 
@@ -118,7 +118,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                         // var_dump($sanpham); die;
                         extract($sanpham);
                         $hinhpath = $img_path . $image;
-                        if (is_file($hinhpath)) {
+                        if (isset($hinhpath)) {
                             $image = "<img src='" . $hinhpath . "' height='60'>";
                         } else {
                             $image = "Không có hình ảnh";
@@ -158,7 +158,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                     <ul class="pagination">
                         <?php if ($cr_page > 1) : ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?act=dsma&page=<?= $cr_page - 1 ?>" aria-label="Previous">
+                                <a class="page-link" href="index.php?act=dssp&page=<?= $cr_page - 1 ?>" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -166,7 +166,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 
                         <?php for ($i = 1; $i <= $total_page; $i++) : ?>
                             <li class="page-item <?php echo (($cr_page == $i) ? 'active' : '') ?>">
-                                <a class="page-link" href="index.php?act=dsma&page=<?= $i ?>">
+                                <a class="page-link" href="index.php?act=dssp&page=<?= $i ?>">
                                     <?= $i ?>
                                 </a>
                             </li>
@@ -174,7 +174,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 
                         <?php if ($cr_page < $total_page) : ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?act=dsma&page=<?= $cr_page + 1 ?>" aria-label="Next">
+                                <a class="page-link" href="index.php?act=dssp&page=<?= $cr_page + 1 ?>" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
