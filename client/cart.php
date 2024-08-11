@@ -1,51 +1,47 @@
 <?php
+
 include './include/nav.php';
 ?>
-
 <div class="container mt-5">
-    <h2 class="mb-4">Giỏ hàng của bạn</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Sản phẩm</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Tổng</th>
-                <th>Hành động</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Sản phẩm 1</td>
-                <td>100,000 VND</td>
-                <td><input type="number" class="form-control" value="1" min="1"></td>
-                <td>100,000 VND</td>
-                <td>
-                    <button class="btn btn-danger btn-sm">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Sản phẩm 2</td>
-                <td>200,000 VND</td>
-                <td><input type="number" class="form-control" value="2" min="1"></td>
-                <td>400,000 VND</td>
-                <td>
-                    <button class="btn btn-danger btn-sm">Xóa</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>Tổng cộng: 500,000 VND</h4>
-        </div>
-        <div class="col-md-6 text-right">
-            <button class="btn btn-primary">Cập nhật giỏ hàng</button>
-            <button class="btn btn-success">Thanh toán</button>
-        </div>
-    </div>
+    <h2>Giỏ hàng của bạn</h2>
+    <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Hình ảnh</th>
+                    <th>Tổng cộng</th>
+                    <th></th> 
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($_SESSION['cart'] as $product_id => $item): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($item['name']); ?></td>
+                        <td><?php echo number_format($item['price']); ?> VND</td>
+                        <td><?php echo intval($item['quantity']); ?></td>
+                        <td><img src="public/img/<?php echo htmlspecialchars($item['image']); ?>" width="100px" height="100px"></td>
+                        <td><?php echo number_format($item['price'] * $item['quantity']); ?> VND</td>
+                        <td>
+                            <a href="index.php?act=remove_from_cart&id=<?php echo $product_id; ?>"
+                               class="btn btn-danger"
+                               onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Giỏ hàng của bạn trống.</p>
+    <?php endif; ?>
 </div>
-<br>
+
+
+
 <?php
 include './include/footer.php';
 ?>

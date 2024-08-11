@@ -3,7 +3,7 @@ include './include/nav.php';
 ?>
 
 <?php
-include './dao/product.php';
+
 
 // Lấy từ khóa tìm kiếm từ URL
 $query = isset($_GET['query']) ? trim($_GET['query']) : '';
@@ -18,6 +18,8 @@ $products = searchProducts($query);
         <?php
         if ($products) {
             foreach ($products as $product) {
+                $price = $product['price']; 
+                $formatted_price = number_format($price);
                 echo '
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
@@ -27,7 +29,7 @@ $products = searchProducts($query);
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
                                     <li><a class="btn btn-success text-white mt-2" href="index.php?act=shop-single&id=' . $product['id'] . '"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2"  href="index.php?act=add_to_cart&id=' . $product['id'] . '"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -42,7 +44,7 @@ $products = searchProducts($query);
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
-                            <p class="text-center mb-0">$' . $product['price'] . '</p>
+                            <p class="text-center mb-0">' . $formatted_price . 'đ</p>
                         </div>
                     </div>
                 </div>';

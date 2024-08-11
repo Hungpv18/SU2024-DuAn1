@@ -2,11 +2,14 @@
 include './include/nav.php';
 ?>
 <?php
-include './dao/product.php';
+
 $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $product = getProductById($product_id);
 if ($product) {
+    $price = $product['price'];
+    $formatted_price = number_format($price);
     echo '
+    
     <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
@@ -22,7 +25,7 @@ if ($product) {
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">' . $product['name'] . '</h1>
-                            <p class="h3 py-2">$' . $product['price'] . '</p>
+                            <p class="h3 py-2">' . $formatted_price . 'đ</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -34,14 +37,14 @@ if ($product) {
 
                             <h6>Mô tả</h6>
                             <p>' . $product['desc_c'] . '</p>                            
-                            <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear">
+                           
+                               
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 Số lượng
-                                                <input type="hidden" name="product-quantity" id="product-quantity" value="1">
+                                                <input type="hidden" name="product-quantity">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -54,10 +57,12 @@ if ($product) {
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocart">Thêm vào giỏ hàng</button>
+                                    <a  href="index.php?act=add_to_cart&id=' . $product['id'] . '">
+                                        <button type="submit" class="btn btn-success btn-lg" >Thêm vào giỏ hàng</button>
+                                        </a>
                                     </div>
                                 </div>
-                            </form>
+                   
                         </div>
                     </div>
                 </div>

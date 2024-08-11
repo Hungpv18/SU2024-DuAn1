@@ -38,7 +38,7 @@
                 <a class="nav-icon position-relative text-decoration-none" href="index.php?act=cart">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="index.php?act=sigin">
+                <a class="nav-icon position-relative text-decoration-none" href="index.php?act=login">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
                 </a>
             </div>

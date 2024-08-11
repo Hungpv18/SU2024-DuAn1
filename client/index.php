@@ -84,7 +84,6 @@ include './include/nav.php';
     </div>
     <div class="row">
         <?php
-        include './dao/product.php';
         $rows = getCategories();
         foreach ($rows as $row) {
             echo '

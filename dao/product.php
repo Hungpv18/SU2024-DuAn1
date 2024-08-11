@@ -65,3 +65,23 @@ function getProductsByPage($offset, $limit, $category_id = null) {
     }
     return pdo_query_total($sql, $params);
 }
+
+function getProductBy($id) {
+    $sql = "SELECT * FROM products WHERE id = :id";
+    $stmt = pdo_query1($sql, ['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function getuser($username, $password) {
+    // Giả sử bạn đã kết nối tới cơ sở dữ liệu
+    $sql = "SELECT * FROM users WHERE username = :username";
+    $stmt = pdo_query1($sql, ['username' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Debugging - kiểm tra dữ liệu người dùng từ cơ sở dữ liệu
+
+    if ($user && password_verify($password, $user['password'])) {
+        return $user; // Trả về thông tin người dùng nếu xác thực thành công
+    }
+    return false; // Trả về false nếu không thành công
+}

@@ -94,3 +94,17 @@ function pdo_query_total($sql, $params = []) {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+function pdo_query1($sql, $params = []) {
+    try {
+        $pdo = new PDO('mysql:host=localhost;dbname=su24_duan1', 'root', 'mysql');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $pdo->prepare($sql);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue(':' . $key, $value);
+        }
+        $stmt->execute();
+        return $stmt;
+    } catch (PDOException $e) {
+        echo 'Connection failed: ' . $e->getMessage();
+    }
+}
