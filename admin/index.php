@@ -38,12 +38,12 @@ if (isset($_GET['act'])) {
         case 'capnhatkh':
             if (isset($_POST['updatekh']) && ($_POST['updatekh'])) {
                 $id = $_POST['id'];
-                $name = $_POST['name'];
+                $username = $_POST['username'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
                 echo '<script>alert("Cập nhật thành công")</script>';
-                update_dskh($id, $name, $email, $phone, $address);
+                update_dskh($id, $username, $email, $phone, $address);
                 $list_dskh = loadall_dskh();
                 header('Location: index.php?act=dskh&page=1');
                 exit();
@@ -69,6 +69,7 @@ if (isset($_GET['act'])) {
                 if ($check == 1) {
                     insert_danhmuc($name);
                     echo '<script>alert("Thêm thành công!")</script>';
+                    header('Location: index.php?act=dsdm&page=1');
                 }
             }
             include './modules/danhmuc/them.php';
@@ -80,6 +81,7 @@ if (isset($_GET['act'])) {
         case 'xoadm':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_danhmuc($_GET['id']);
+                header('Location: index.php?act=dsdm&page=1');
             }
             $listdanhmuc = loadall_danhmuc();
             include('./modules/danhmuc/danhsach.php');
@@ -178,6 +180,7 @@ if (isset($_GET['act'])) {
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                         insert_sanpham($name, $price, $sale_price, $image, $desc_c, $category_id);
                         echo '<script>alert("Sản phẩm đã được thêm")</script>';
+                        header('Location: index.php?act=dssp');
                     }
                 }
             }
@@ -246,20 +249,6 @@ if (isset($_GET['act'])) {
             $listdanhmuc = loadall_danhmuc();
             include('./modules/sanpham/danhsach.php');
             break;
-
-            // Đơn hàng
-            // case 'dsdh':
-            //     if (isset($_POST['listcheck']) && ($_POST['listcheck'])) {
-            //         $keyw = $_POST['keyw'];
-            //         $user_id  = $_POST['category_id'];
-            //     } else {
-            //         $keyw = '';
-            //         $user_id  = 0;
-            //     }
-    
-            //     $listdonhang = loadall_donhang($keyw, $user_id);
-            //     require './modules/donhang/danhsach.php';
-            //     break;
     }
 }
 

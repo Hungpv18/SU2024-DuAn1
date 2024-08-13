@@ -75,16 +75,6 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="true" aria-controls="collapseOrders">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Danh sách Đơn Hàng</span>
-                </a>
-                <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="index.php?act=dsdh">Danh sách</a>
-                    </div>
-                </div>
-            </li>
+           
 
         </ul>

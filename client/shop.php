@@ -16,12 +16,11 @@ include './include/nav.php';
     <div class="row">
 
         <div class="col-lg-3">
-            <h1 class="h2 pb-4">Categories</h1>
+            <h1 class="h2 pb-4">Danh mục </h1>
             <ul class="list-unstyled templatemo-accordion">
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Gender
-                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        Loại <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul class="collapse show list-unstyled pl-3">
                         <li><a class="text-decoration-none" href="#">Men</a></li>
@@ -30,7 +29,7 @@ include './include/nav.php';
                 </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Sale
+                        Giảm giá
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseTwo" class="collapse list-unstyled pl-3">
@@ -40,7 +39,7 @@ include './include/nav.php';
                 </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Product
+                        Sản phẩm
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseThree" class="collapse list-unstyled pl-3">
@@ -60,7 +59,7 @@ include './include/nav.php';
                             <a class="h3 text-dark text-decoration-none mr-3" href="index.php?act=shop&category_id=0">Tất cả</a>
                         </li>
                         <?php
-                      
+
                         $categories = getCategories();
                         foreach ($categories as $category) {
                             echo '
@@ -102,7 +101,7 @@ include './include/nav.php';
                 <?php
                 if ($products) {
                     foreach ($products as $product) {
-                        $price = $product['price']; 
+                        $price = $product['price'];
                         $formatted_price = number_format($price);
                         echo '
             <div class="col-md-4">

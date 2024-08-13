@@ -4,9 +4,9 @@
  * @param mixed $khachhang
  * @return void
  */
-function insert_taikhoan($email, $name, $password)
+function insert_taikhoan($email, $username, $password)
 {
-    $sql = "insert into users(email, name, password) values('$email', '$name', '$password')";
+    $sql = "insert into users(email, name, password) values('$email', '$username', '$password')";
     pdo_execute($sql);
 }
 
@@ -22,9 +22,9 @@ function check_user($email, $password)
     $tk = pdo_query_one($sql);
     return $tk;
 }
-function check_user_validate($name)
+function check_user_validate($username)
 {
-    $sql = "select * from users where name ='" . $name . "' ";
+    $sql = "select * from users where username ='" . $username . "' ";
     $tk = pdo_query_one($sql);
     return $tk;
 }
@@ -37,17 +37,17 @@ function check_email_validate($email)
 /**
  * Cập nhật tài khoản
  * @param mixed $id
- * @param mixed $name
+ * @param mixed $username
  * @param mixed $email
  * @param mixed $phone
  * @param mixed $address
  * @param mixed $password
  * @return void
  */
-function capnhat_taikhoan($id, $name, $email, $phone, $address, $password)
+function capnhat_taikhoan($id, $username, $email, $phone, $address, $password)
 {
     try {
-        $sql = "update taikhoan set user = '" . $name . "', email ='" . $email . "', sdt = '" . $phone . "', dia_chi = '" . $address . "', mat_khau = '" . $password . "' where id=" . $id;
+        $sql = "update taikhoan set user = '" . $username . "', email ='" . $email . "', sdt = '" . $phone . "', dia_chi = '" . $address . "', mat_khau = '" . $password . "' where id=" . $id;
         pdo_execute($sql);
         return 1;
     } catch (Exception $e) {
@@ -134,14 +134,14 @@ function get_khachhang_by_id($id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function update_dskh($id, $name, $email, $phone, $address)
+function update_dskh($id, $username, $email, $phone, $address)
 {
-    $sql = "UPDATE users SET name = ?, email = ?, phone = ?, address = ? WHERE id = ?";
-    pdo_execute($sql, $name, $email, $phone, $address, $id);
+    $sql = "UPDATE users SET username = ?, email = ?, phone = ?, address = ? WHERE id = ?";
+    pdo_execute($sql, $username, $email, $phone, $address, $id);
 }
-function check_only_user($name)
+function check_only_user($username)
 {
-    $sql = "select * from khachhang where user='" . $name . "'";
+    $sql = "select * from khachhang where user='" . $username . "'";
     $tk = pdo_query_one($sql);
     return $tk;
 }

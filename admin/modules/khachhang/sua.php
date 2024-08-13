@@ -26,8 +26,8 @@ if (is_array($khachhang)) {
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-6 mb-3">
-                                <label for="name" class="form-label">Tên đăng nhập</label>
-                                <input type="text" class="form-control" id="nameInput" name="name" value="<?php if (isset($name) && ($name != "")) echo $name ?>">
+                                <label for="username" class="form-label">Tên đăng nhập</label>
+                                <input type="text" class="form-control" id="nameInput" name="username" value="<?php if (isset($username) && ($username != "")) echo $username ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email</label>

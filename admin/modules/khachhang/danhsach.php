@@ -67,9 +67,9 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
                                 echo '<tr>
                                     <td><input type="checkbox" name="" id="" /></td>
                                     <td>' .$id . '</td>
-                                    <td>' .$name. '</td>
+                                    <td>' .$username. '</td>
                                     <td>' .$email. '</td>
-                                    <td>' .$phone. '</td>
+                                    <td>' .$phone. '</td>uẻ
                                     <td>' .$address. '</td>
                                     <td>
                                         <a href="' .$suakh. '" class="btn btn-primary">Sửa</a>
